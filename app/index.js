@@ -69,6 +69,10 @@ RobotypeGenerator.prototype.jshint = function jshint() {
   this.copy('jshintrc', '.jshintrc');
 };
 
+RobotypeGenerator.prototype.bowerrc = function bowerrc() {
+  this.copy('bowerrc', '.bowerrc');
+};
+
 RobotypeGenerator.prototype.editorConfig = function editorConfig() {
   this.copy('editorconfig', '.editorconfig');
 };
