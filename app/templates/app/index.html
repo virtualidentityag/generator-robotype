@@ -38,7 +38,6 @@
 	<!-- bower:js -->
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-route/angular-route.js"></script>
-	<script src="bower_components/angular-resource/angular-resource.js"></script>
 	<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
@@ -48,24 +47,24 @@
 		<script src="app/headerNavCtrl.js"></script>
 		<script src="app/apiService.js"></script>
 		<script src="app/overviewCtrl.js"></script>
-		<script src="app/items/itemsCtrl.js"></script>
-		<script src="app/items/itemCtrl.js"></script>
-		<script src="app/items/itemService.js"></script>
-		<script src="app/elements/elementsCtrl.js"></script>
-		<script src="app/elements/elementCtrl.js"></script>
-		<script src="app/elements/elementService.js"></script>
+		<script src="app/users/usersCtrl.js"></script>
+		<script src="app/users/userCtrl.js"></script>
+		<script src="app/users/userService.js"></script>
+		<script src="app/products/productsCtrl.js"></script>
+		<script src="app/products/productCtrl.js"></script>
+		<script src="app/products/productService.js"></script>
 		<!-- endbuild -->
 
 	<script type="text/javascript">
 		angular.module('app').constant('CONFIG', {
 			'API': {
-				'ITEMS': {
-					'SINGLE': 'http://127.0.0.1:1337//robotypeAngular/api/items/',
-					'ALL': 'http://127.0.0.1:1337//robotypeAngular/api/items/all'
+				'USERS': {
+					'SINGLE': 'http://127.0.0.1:9001//robotypeAngular/api/users/',
+					'ALL': 'http://127.0.0.1:9001//robotypeAngular/api/users/all'
 				},
-				'ELEMENTS': {
-					'SINGLE': 'http://127.0.0.1:1337//robotypeAngular/api/items/',
-					'ALL': 'http://127.0.0.1:1337//robotypeAngular/api/items/all'
+				'PRODUCTS': {
+					'SINGLE': 'http://127.0.0.1:9001//robotypeAngular/api/products/',
+					'ALL': 'http://127.0.0.1:9001//robotypeAngular/api/products/all'
 				}
 			}
 		});

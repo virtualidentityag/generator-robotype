@@ -3,16 +3,23 @@
 <div class="container">
 	<div class="row">
 		<div class="jumbotron">
-			<h1>Robotype</h1>
-			<p>This is a simple example application </p>
-			<p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+			<h1><span class="robologo">[:|]</span> Robotype</h1>
+			<p>Robotype speeds up your rapid prototyping by generating a quick-start project setup featuring:</p>
+			<ul>
+				<li><a href="http://yeoman.io/">Yeoman</a> generator - easy head-start</li>
+				<li><a href="https://angularjs.org/">AngularJS</a> app - simple prototype showcase</li>
+				<li><a href="http://angular-ui.github.io/bootstrap/">Angular UI Bootstrap</a> - easy and robust UI widgets</li>
+				<li><a href="https://helloreverb.com/developers/swagger">Swagger-based</a> mock server - provides sample data</li>
+				<li>Simple RESTful API - access data</li>
+			</ul>
+			<p><a class="btn btn-primary btn-lg" role="button" href="README.md">Learn more</a></p>
 		</div>
 	</div>
 </div>
 <div class="container">
 	<div class="row">
 		<div class="col-md-12">
-			<h1 id="#types">Your APIs by type</h1>
+			<h1 id="#types">Browse API by type</h1>
 			<div class="list-group">
 				<a class="list-group-item" ng-repeat="type in types | orderBy:name" ng-show="type.path" href="#/{{type.name}}">{{type.name}}</a>
 			</ul>

@@ -1,0 +1,156 @@
+{
+	"apis": [
+	    {
+	        "path": "/api/users/{id}",
+	        "operations": [
+	            {
+	                "method": "GET",
+	                "summary": "Get user by id",
+	                "notes": "",
+	                "type": "parameter(type) || User",
+	                "nickname": "getUserById",
+	                "parameters": [
+	                    {
+	                        "name": "id",
+	                        "description": "The id that needs to be fetched.",
+	                        "required": true,
+	                        "type": "string",
+	                        "paramType": "path"
+	                    }
+	                ],
+	                "responseMessages": [
+	                    {
+	                        "code": 400,
+	                        "message": "Invalid id supplied"
+	                    },
+	                    {
+	                        "code": 404,
+	                        "message": "User not found"
+	                    }
+	                ]
+	            }
+	        ]
+	    },
+	    {
+	        "path": "/api/users/{id}",
+	        "operations": [
+	            {
+	                "method": "POST",
+	                "summary": "Update an user",
+	                "notes": "",
+	                "type": "User",
+	                "nickname": "updateUserById",
+	                "parameters": [
+	                    {
+	                        "name": "id",
+	                        "description": "The id of the user to be updated.",
+	                        "required": true,
+	                        "type": "string",
+	                        "paramType": "path"
+	                    }
+	                ],
+	                "responseMessages": [
+	                    {
+	                        "code": 400,
+	                        "message": "Invalid name supplied"
+	                    },
+	                    {
+	                        "code": 404,
+	                        "message": "User not found"
+	                    }
+	                ]
+	            }
+	        ]
+	    },
+	    {
+	        "path": "/api/users/all",
+	        "operations": [
+	            {
+	                "method": "GET",
+	                "summary": "Get all users",
+	                "notes": "",
+	                "type": "UserList",
+	                "nickname": "getAllUsers"
+	            }
+	        ]
+	    }
+	],
+	"models": {
+	    "Object": {
+	        "id": "Object",
+	        "properties": {
+				"uuid": {
+					"type": "string",
+					"mockValue": "this will be hopefully overwritten"
+				}
+	        }
+	    },
+		"Identifiable": {
+	        "id": "Identifiable",
+			"extends": "Object",
+	        "properties": {
+	            "uuid": {
+                    "type": "string",
+                    "mockValue": "randomUUID()"
+                }
+	        }
+	    },
+		"User": {
+	        "id": "User",
+			"extends": "Identifiable",
+	        "properties": {
+	            "id": {
+	                "type": "string",
+	                "mockValue": "pathVariable(id) || parameter(name) || randomNumber(1, 10) || generatedId"
+	            },
+	            "name": {
+	                "type": "string",
+	                "mockValue": "pathVariable(name) || _full_name())"
+	            },
+				"email": {
+	                "type": "string",
+	                "mockValue": "_email()"
+	            },
+				"address": {
+	                "type": "string",
+	                "mockValue": "_address()"
+	            },
+				"created": {
+	                "type": "date",
+	                "mockValue": "_date('DD.MM.YYYY')"
+	            }
+	        }
+	    },
+	    "UserList": {
+	        "id": "Users",
+	        "properties": {
+	        	"page":{
+	                "type": "integer",
+	                "mockValue": "randomNumber(1, 10)"
+	            },
+	            "pagesize":{
+	                "type": "integer",
+	                "mockValue": 20
+	            },
+	            "datalist": {
+	            	"type":"array",
+	            	"users":{"$ref":"User"},
+	                "mockValue": ["$ref:User", "$ref:User", "$ref:User"]
+	            }
+	        }
+	    },
+		"SuccessEnvelope": {
+			"id": "SuccessEnvelope",
+			"properties": {
+				"status": {
+					"type": "string",
+					"mockValue": "success"
+				},
+				"response": {
+					"type": "object",
+					"mockValue": "$inject:envelopeData"
+				}
+			}
+		}
+	}
+}

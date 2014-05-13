@@ -1,0 +1,35 @@
+<div ng-include="'app/partials/header.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{user.name}}</h1>
+			<p>This is an element of type User.</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="./#/users" class="back-button"><span>&lt;</span> back to users</a>
+				</div>
+				<table class="table">
+					<tr>
+						<th>id</th>
+						<td>{{user.id}}</td>
+					</tr>
+					<tr>
+						<th>e-mail</th>
+						<td>{{user.email}}</td>
+					</tr>
+					<tr>
+						<th>address</th>
+						<td>{{user.address}}</td>
+					</tr>
+					<tr>
+						<th>member since</th>
+						<td>{{user.created}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+

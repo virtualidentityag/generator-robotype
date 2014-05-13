@@ -9,8 +9,8 @@ angular.module('app')
 			//return the promise directly.
 			return [
 				{name: 'overview', path: ''},
-				{name: 'items', path: 'items'},
-				{name: 'elements', path: 'elements'}
+				{name: 'users', path: 'users'},
+				{name: 'products', path: 'products'}
 			];
 		}
 	};

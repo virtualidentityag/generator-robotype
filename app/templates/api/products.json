@@ -1,0 +1,172 @@
+{
+	"apis": [
+	    {
+	        "path": "/api/products/{id}",
+	        "operations": [
+	            {
+	                "method": "GET",
+	                "summary": "Get product by id",
+	                "notes": "",
+	                "type": "parameter(type) || Product",
+	                "nickname": "getProductById",
+	                "parameters": [
+	                    {
+	                        "name": "id",
+	                        "description": "The id that needs to be fetched.",
+	                        "required": true,
+	                        "type": "string",
+	                        "paramType": "path"
+	                    }
+	                ],
+	                "responseMessages": [
+	                    {
+	                        "code": 400,
+	                        "message": "Invalid id supplied"
+	                    },
+	                    {
+	                        "code": 404,
+	                        "message": "Product not found"
+	                    }
+	                ]
+	            }
+	        ]
+	    },
+	    {
+	        "path": "/api/products/{id}",
+	        "operations": [
+	            {
+	                "method": "POST",
+	                "summary": "Update an product",
+	                "notes": "",
+	                "type": "Product",
+	                "nickname": "updateProductById",
+	                "parameters": [
+	                    {
+	                        "name": "id",
+	                        "description": "The id of the product to be updated.",
+	                        "required": true,
+	                        "type": "string",
+	                        "paramType": "path"
+	                    }
+	                ],
+	                "responseMessages": [
+	                    {
+	                        "code": 400,
+	                        "message": "Invalid name supplied"
+	                    },
+	                    {
+	                        "code": 404,
+	                        "message": "Product not found"
+	                    }
+	                ]
+	            }
+	        ]
+	    },
+	    {
+	        "path": "/api/products/all",
+	        "operations": [
+	            {
+	                "method": "GET",
+	                "summary": "Get all products",
+	                "notes": "",
+	                "type": "ProductList",
+	                "nickname": "getAllProducts"
+	            }
+	        ]
+	    }
+	],
+	"models": {
+	    "Object": {
+	        "id": "Object",
+	        "properties": {
+				"uuid": {
+					"type": "string",
+					"mockValue": "this will be hopefully overwritten"
+				}
+	        }
+	    },
+		"Identifiable": {
+	        "id": "Identifiable",
+			"extends": "Object",
+	        "properties": {
+	            "uuid": {
+                    "type": "string",
+                    "mockValue": "randomUUID()"
+                }
+	        }
+	    },
+		"Product": {
+	        "id": "Product",
+			"extends": "Identifiable",
+	        "properties": {
+	            "id": {
+	                "type": "string",
+	                "mockValue": "pathVariable(id) || parameter(name) || randomNumber(1, 10) || generatedId"
+	            },
+	            "name": {
+	                "type": "string",
+	                "mockValue": "pathVariable(name) || _title()"
+	            },
+				"description": {
+	                "type": "string",
+					"mockValue": "loremIpsum(2,10,sentences)"
+	            },
+		        "url": {
+			        "type": "string",
+			        "description": "valid url to link to product",
+			        "mockValue": "_url()"
+		        },
+		        "created": {
+	                "type": "date",
+	                "mockValue": "randomTimestamp(2013-01-15 00:00:00, 2014-01-16 00:00:00)"
+	            },
+				"updated": {
+	                "type": "date",
+	                "mockValue": "randomTimestamp()"
+	            },
+	             "status": {
+	                "type": "string",
+	                "mockValue": "randomOption([sold out,in stock,ordered])"
+	            },
+	            "metaproperties": {
+	            	"type": "array",
+	            	"mockValue": [
+		            	"loremIpsum(1)",
+		            	"randomOption([Lorem,ipsum,dolor])"
+		            ]
+	            }
+	        }
+	    },
+	    "ProductList": {
+	        "id": "Products",
+	        "properties": {
+	        	"page":{
+	                "type": "integer",
+	                "mockValue": "randomNumber(1, 10)"
+	            },
+	            "pagesize":{
+	                "type": "integer",
+	                "mockValue": 20
+	            },
+	            "datalist": {
+	            	"type":"array",
+	            	"products":{"$ref":"Product"},
+	                "mockValue": ["$ref:Product", "$ref:Product", "$ref:Product"]
+	            }
+	        }
+	    },
+		"SuccessEnvelope": {
+			"id": "SuccessEnvelope",
+			"properties": {
+				"status": {
+					"type": "string",
+					"mockValue": "success"
+				},
+				"response": {
+					"type": "object",
+					"mockValue": "$inject:envelopeData"
+				}
+			}
+		}
+	}
+}

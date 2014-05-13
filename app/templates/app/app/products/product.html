@@ -1,0 +1,43 @@
+<div ng-include="'app/partials/header.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{product.name}}</h1>
+			<p>This is an element of type Product.</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="./#/products" class="back-button"><span>&lt;</span> back to products</a>
+				</div>
+				<table class="table">
+					<tr>
+						<th>id</th>
+						<td>{{product.id}}</td>
+					</tr>
+					<tr>
+						<th>description</th>
+						<td>{{product.description}}</td>
+					</tr>
+					<tr>
+						<th>url</th>
+						<td>{{product.url}}</td>
+					</tr>
+					<tr>
+						<th>status</th>
+						<td>{{product.status}}</td>
+					</tr>
+					<tr>
+						<th>tags</th>
+						<td>
+							<ul class="tag-list">
+								<li ng-repeat="meta in product.metaproperties">{{meta}}</li>
+							</ul>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
