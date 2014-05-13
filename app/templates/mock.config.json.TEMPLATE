@@ -1,0 +1,7 @@
+[
+	{
+		"id": "robotypeAngular",
+		"name":"Robotype Angular App",
+		"mockDirectory" : "api"
+	}
+]

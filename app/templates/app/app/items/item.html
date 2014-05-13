@@ -1,0 +1,27 @@
+<div ng-include="'app/partials/header.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>{{item.name}}</h1>
+			<p>This is an element of type Item.</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="./#/items" class="back-button"><span>&lt;</span> back to items</a>
+				</div>
+				<table class="table">
+					<tr>
+						<th>id</th>
+						<td>{{item.id}}</td>
+					</tr>
+					<tr>
+						<th>description</th>
+						<td>{{item.description}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+

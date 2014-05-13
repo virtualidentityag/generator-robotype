@@ -1,0 +1,29 @@
+<div ng-include="'app/partials/header.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1>Elements</h1>
+			<p>These are Elements of type element</p>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<a href="./#/" class="back-button"><span>&lt;</span> back to overview</a>
+				</div>
+				<table class="table item-list" border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<th>id</th>
+						<th>name</th>
+						<th>status</th>
+					</tr>
+					<tr ng-repeat="item in items.datalist | orderBy:name" ng-click="go(item.id)">
+						<td>{{item.id}}</td>
+						<td>{{item.name}}</td>
+						<td>{{item.status}}</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+

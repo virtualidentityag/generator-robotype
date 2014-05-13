@@ -1,0 +1,22 @@
+<div ng-include="'app/partials/header.html'"></div>
+
+<div class="container">
+	<div class="row">
+		<div class="jumbotron">
+			<h1>Robotype</h1>
+			<p>This is a simple example application </p>
+			<p><a class="btn btn-primary btn-lg" role="button">Learn more</a></p>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<h1 id="#types">Your APIs by type</h1>
+			<div class="list-group">
+				<a class="list-group-item" ng-repeat="type in types | orderBy:name" ng-show="type.path" href="#/{{type.name}}">{{type.name}}</a>
+			</ul>
+		</div>
+	</div>
+</div>
+

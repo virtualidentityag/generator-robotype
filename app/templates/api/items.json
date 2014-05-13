@@ -1,0 +1,175 @@
+{
+	"apis": [
+	    {
+	        "path": "/api/items/{id}",
+	        "operations": [
+	            {
+	                "method": "GET",
+	                "summary": "Get item by id",
+	                "notes": "",
+	                "type": "parameter(type) || Item",
+	                "nickname": "getItemById",
+	                "parameters": [
+	                    {
+	                        "name": "id",
+	                        "description": "The id that needs to be fetched.",
+	                        "required": true,
+	                        "type": "string",
+	                        "paramType": "path"
+	                    }
+	                ],
+	                "responseMessages": [
+	                    {
+	                        "code": 400,
+	                        "message": "Invalid id supplied"
+	                    },
+	                    {
+	                        "code": 404,
+	                        "message": "Item not found"
+	                    }
+	                ]
+	            }
+	        ]
+	    },
+	    {
+	        "path": "/api/items/{id}",
+	        "operations": [
+	            {
+	                "method": "POST",
+	                "summary": "Update an item",
+	                "notes": "",
+	                "type": "Item",
+	                "nickname": "updateItemById",
+	                "parameters": [
+	                    {
+	                        "name": "id",
+	                        "description": "The id of the item to be updated.",
+	                        "required": true,
+	                        "type": "string",
+	                        "paramType": "path"
+	                    }
+	                ],
+	                "responseMessages": [
+	                    {
+	                        "code": 400,
+	                        "message": "Invalid name supplied"
+	                    },
+	                    {
+	                        "code": 404,
+	                        "message": "Item not found"
+	                    }
+	                ]
+	            }
+	        ]
+	    },
+	    {
+	        "path": "/api/items/all",
+	        "operations": [
+	            {
+	                "method": "GET",
+	                "summary": "Get all items",
+	                "notes": "",
+	                "type": "ItemList",
+	                "nickname": "getAllItems"
+	            }
+	        ]
+	    }
+	],
+	"models": {
+	    "Object": {
+	        "id": "Object",
+	        "properties": {
+				"uuid": {
+					"type": "string",
+					"mockValue": "this will be hopefully overwritten"
+				}
+	        }
+	    },
+		"Identifiable": {
+	        "id": "Identifiable",
+			"extends": "Object",
+	        "properties": {
+	            "uuid": {
+                    "type": "string",
+                    "mockValue": "randomUUID()"
+                }
+	        }
+	    },
+		"Item": {
+	        "id": "Item",
+			"extends": "Identifiable",
+	        "properties": {
+	            "id": {
+	                "type": "string",
+	                "mockValue": "pathVariable(id) || parameter(name) || randomNumber(1, 10) || generatedId"
+	            },
+	            "name": {
+	                "type": "string",
+	                "mockValue": "pathVariable(name) || _title()"
+	            },
+				"description": {
+	                "type": "string",
+	                "mockValue": "loremIpsum(5, 12)"
+	            },
+				"message": {
+	                "type": "string",
+	                "mockValue": "sayHello()"
+	            },
+				"created": {
+	                "type": "date",
+	                "mockValue": "randomTimestamp(2013-01-15 00:00:00, 2014-01-16 00:00:00)"
+	            },
+				"updated": {
+	                "type": "date",
+	                "mockValue": "randomTimestamp()"
+	            },
+	             "status": {
+	                "type": "string",
+	                "mockValue": "parameter(status) || normal"
+	            },
+	            "metaproperties": {
+	            	"type": "array",
+	            	"mockValue": [
+		            	"test",
+		            	"randomOption([Lorem,ipsum,dolor])",
+		            	{
+			                "arraystring": "string",
+			                "arraystringmockValue": "randomString(16)"
+			            }
+		            ]
+	            }
+	        }
+	    },
+	    "ItemList": {
+	        "id": "Items",
+	        "properties": {
+	        	"page":{
+	                "type": "integer",
+	                "mockValue": "randomNumber(1, 10)"
+	            },
+	            "pagesize":{
+	                "type": "integer",
+	                "mockValue": 20
+	            },
+	            "datalist": {
+	            	"type":"array",
+	            	"items":{"$ref":"Item"},
+	                "mockValue": ["$ref:Item", "$ref:Item", "$ref:Item"]
+	            }
+	        }
+	    },
+		"SuccessEnvelope": {
+			"id": "SuccessEnvelope",
+			"properties": {
+				"status": {
+					"type": "string",
+					"mockValue": "success"
+				},
+				"response": {
+					"type": "object",
+					"mockValue": "$inject:envelopeData"
+				}
+			}
+		}
+	}
+}

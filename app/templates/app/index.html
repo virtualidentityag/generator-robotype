@@ -1,0 +1,74 @@
+<!doctype html>
+<!--[if lt IE 7]>	  <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>		 <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>		 <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width">
+	<!-- build:css styles/vendor.css -->
+	<!-- bower:css -->
+	<!-- endbower -->
+	<!-- endbuild -->
+	<!-- build:css({.tmp,app}) styles/main.css -->
+	<!-- <link rel="stylesheet" href="styles/normalize.css">-->
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="styles/main.css">
+	<!-- endbuild -->
+
+</head>
+<body ng-app="app">
+
+  	<!-- Add your site or application content here -->
+	<div role="main" ng-view="">
+
+	</div>
+
+	<!--[if lt IE 9]>
+	<script src="bower_components/es5-shim/es5-shim.js"></script>
+	<script src="bower_components/json3/lib/json3.min.js"></script>
+	<![endif]-->
+
+	<!-- build:js scripts/vendor.js -->
+	<script src="scripts/polyfills.js"></script>
+	<!-- bower:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-bootstrap/ui-bootstrap.min.js"></script>
+	<!-- endbower -->
+	<!-- endbuild -->
+
+		<!-- build:js({.tmp,app}) scripts/scripts.js -->
+		<script src="app/app.js"></script>
+		<script src="app/headerNavCtrl.js"></script>
+		<script src="app/apiService.js"></script>
+		<script src="app/overviewCtrl.js"></script>
+		<script src="app/items/itemsCtrl.js"></script>
+		<script src="app/items/itemCtrl.js"></script>
+		<script src="app/items/itemService.js"></script>
+		<script src="app/elements/elementsCtrl.js"></script>
+		<script src="app/elements/elementCtrl.js"></script>
+		<script src="app/elements/elementService.js"></script>
+		<!-- endbuild -->
+
+	<script type="text/javascript">
+		angular.module('app').constant('CONFIG', {
+			'API': {
+				'ITEMS': {
+					'SINGLE': 'http://127.0.0.1:1337//robotypeAngular/api/items/',
+					'ALL': 'http://127.0.0.1:1337//robotypeAngular/api/items/all'
+				},
+				'ELEMENTS': {
+					'SINGLE': 'http://127.0.0.1:1337//robotypeAngular/api/items/',
+					'ALL': 'http://127.0.0.1:1337//robotypeAngular/api/items/all'
+				}
+			}
+		});
+	</script>
+</body>
+</html>
