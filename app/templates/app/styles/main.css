@@ -1,5 +1,10 @@
 /* General styles */
 
+body {
+	background-color: <%= bgcolor %>;
+	color: <%= fontcolor %>;
+}
+
 .header-placeholder {
 	margin-top: 71px;
 }

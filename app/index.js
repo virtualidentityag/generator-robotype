@@ -28,11 +28,22 @@ var RobotypeGenerator = yeoman.generators.Base.extend({
     var prompts = [{
       name: 'appname',
       message: 'How would you like to name your prototype?'
+    },
+	{
+      name: 'bgcolor',
+      message: 'Choose a background color (hex or css supported color name):',
+	  default: '#fff'
+    },
+	{
+      name: 'fontcolor',
+      message: 'Choose a font color (hex or css supported color name):',
+	  default: '#333'
     }];
 
     this.prompt(prompts, function (props) {
       this.appname = props.appname;
-
+	  this.bgcolor = props.bgcolor;
+	  this.fontcolor = props.fontcolor;
       done();
     }.bind(this));
   },
@@ -83,6 +94,10 @@ RobotypeGenerator.prototype.mockConfig = function mockConfig() {
 
 RobotypeGenerator.prototype.appCopy = function appCopy() {
 	this.directory('app', 'app');
+};
+
+RobotypeGenerator.prototype.readmeMD = function readmeMD() {
+  this.copy('README.md', 'README.md');
 };
 
 RobotypeGenerator.prototype.apiCopy = function apiCopy() {
