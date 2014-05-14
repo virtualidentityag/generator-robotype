@@ -117,7 +117,7 @@
 	            },
 				"created": {
 	                "type": "date",
-	                "mockValue": "_date('DD.MM.YYYY')"
+	                "mockValue": "randomTimestamp()"
 	            }
 	        }
 	    },
@@ -138,19 +138,6 @@
 	                "mockValue": ["$ref:User", "$ref:User", "$ref:User"]
 	            }
 	        }
-	    },
-		"SuccessEnvelope": {
-			"id": "SuccessEnvelope",
-			"properties": {
-				"status": {
-					"type": "string",
-					"mockValue": "success"
-				},
-				"response": {
-					"type": "object",
-					"mockValue": "$inject:envelopeData"
-				}
-			}
 		}
 	}
 }

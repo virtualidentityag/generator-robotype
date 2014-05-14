@@ -6,7 +6,6 @@ angular.module('app')
 	// Public API here
 	return {
 		getApis: function() {
-			//return the promise directly.
 			return [
 				{name: 'overview', path: ''},
 				{name: 'users', path: 'users'},

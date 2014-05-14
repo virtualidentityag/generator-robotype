@@ -154,19 +154,6 @@
 	                "mockValue": ["$ref:Product", "$ref:Product", "$ref:Product"]
 	            }
 	        }
-	    },
-		"SuccessEnvelope": {
-			"id": "SuccessEnvelope",
-			"properties": {
-				"status": {
-					"type": "string",
-					"mockValue": "success"
-				},
-				"response": {
-					"type": "object",
-					"mockValue": "$inject:envelopeData"
-				}
-			}
 		}
 	}
 }
