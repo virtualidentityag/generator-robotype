@@ -26,12 +26,12 @@ var RobotypeGenerator = yeoman.generators.Base.extend({
     this.log(chalk.magenta('You\'re using the fantastic Robotype generator.'));
 
     var prompts = [{
-      name: 'prototypeName',
+      name: 'appname',
       message: 'How would you like to name your prototype?'
     }];
 
     this.prompt(prompts, function (props) {
-      this.prototypeName = props.prototypeName;
+      this.appname = props.appname;
 
       done();
     }.bind(this));
@@ -75,6 +75,10 @@ RobotypeGenerator.prototype.bowerrc = function bowerrc() {
 
 RobotypeGenerator.prototype.editorConfig = function editorConfig() {
   this.copy('editorconfig', '.editorconfig');
+};
+
+RobotypeGenerator.prototype.mockConfig = function mockConfig() {
+  this.copy('mock.config.json', 'mock.config.json');
 };
 
 RobotypeGenerator.prototype.appCopy = function appCopy() {

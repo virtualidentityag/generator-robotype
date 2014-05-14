@@ -1,14 +1,14 @@
 {
   "name": "generator-robotype",
-  "version": "0.0.0",
-  "description": "Yeoman generator",
+  "version": "0.1.0",
+  "description": "Yeoman generator to setup a rapid prototyping environment based on angular, bootstrap and a mock server.",
   "license": "MIT",
   "main": "app/index.js",
-  "repository": "timomayer/generator-robotype",
+  "repository": "virtualidentityag/generator-robotype",
   "author": {
-    "name": "",
+    "name": "Virtual Identity AG",
     "email": "",
-    "url": "https://github.com/timomayer"
+    "url": "https://github.com/virtualidentityag"
   },
   "engines": {
     "node": ">=0.10.0"
@@ -20,7 +20,7 @@
     "app"
   ],
   "keywords": [
-    "yeoman-generator"
+    "yeoman-generator", "rapid prototyping", "angularjs"
   ],
   "dependencies": {
     "yeoman-generator": "~0.16.0",

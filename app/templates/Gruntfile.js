@@ -142,6 +142,15 @@ module.exports = function (grunt) {
         src: '{,*/}*.css'
       }
     },
+	
+    run: {
+		options: {
+			wait: false
+		},
+		 mock: {
+			exec: 'node ./node_modules/vi-mock-server/server.js mock.config.json'
+        }
+    },
 
     // Run some tasks in parallel to speed up the build process
     concurrent: {
@@ -165,6 +174,7 @@ module.exports = function (grunt) {
       'clean:server',
       'bowerInstall',
       'concurrent:server',
+	  'run:mock',
       'autoprefixer',
       'connect:livereload',
       'watch'
