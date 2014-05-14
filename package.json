@@ -1,6 +1,6 @@
 {
   "name": "generator-robotype",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Yeoman generator to setup a rapid prototyping environment based on angular, bootstrap and a mock server.",
   "license": "MIT",
   "main": "app/index.js",
