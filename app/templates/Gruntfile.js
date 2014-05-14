@@ -8,6 +8,8 @@ module.exports = function (grunt) {
 
   // Time how long tasks take. Can help when optimizing build times
   require('time-grunt')(grunt);
+  
+  grunt.loadNpmTasks('grunt-connect-proxy');
 
   // Define the configuration for all the tasks
   grunt.initConfig({
@@ -22,14 +24,14 @@ module.exports = function (grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
-        files: ['<%%= yeoman.app %>/scripts/{,*/}*.js'],
+        files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: true
         }
       },
       styles: {
-        files: ['<%%= yeoman.app %>/styles/{,*/}*.css'],
+        files: ['<%= yeoman.app %>/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
@@ -37,36 +39,65 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          livereload: '<%%= connect.options.livereload %>'
+          livereload: '<%= connect.options.livereload %>'
         },
         files: [
-          '<%%= yeoman.app %>/{,*/}*.html',
+          '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          '<%%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          '<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
 
     // The actual grunt server settings
     connect: {
-      options: {
-        port: 9000,
-        // Change this to '0.0.0.0' to access the server from outside.
-        hostname: 'localhost',
-        livereload: 35729
-      },
+	  options: {
+		port: 9000,
+		// Change this to '0.0.0.0' to access the server from outside.
+		hostname: 'localhost',
+		livereload: 35729
+	  },
+	  proxies: [
+		{
+			context: '/api',
+			host: 'localhost',
+			port: 9001,
+			rewrite: {
+			'^/api': ''
+		}
+		}
+	  ],
       livereload: {
         options: {
           open: true,
           base: [
             '.tmp',
-            '<%%= yeoman.app %>'
-          ]
+            '<%= yeoman.app %>'
+          ],
+                    middleware: function (connect, options) {
+                        if (!Array.isArray(options.base)) {
+                            options.base = [options.base];
+                        }
+
+                        // Setup the proxy
+                        var middlewares = [require('grunt-connect-proxy/lib/utils').proxyRequest];
+
+                        // Serve static files.
+                        options.base.forEach(function(base) {
+                            middlewares.push(connect.static(base));
+                        });
+
+                        // Make directory browse-able.
+                        var directory = options.directory || options.base[options.base.length - 1];
+                        middlewares.push(connect.directory(directory));
+
+                        return middlewares;
+                    }
         }
       },
       dist: {
         options: {
-          base: '<%%= yeoman.dist %>'
+          base: '<%= yeoman.dist %>'
         }
       }
     },
@@ -78,8 +109,8 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            '<%%= yeoman.dist %>/*',
-            '!<%%= yeoman.dist %>/.git*'
+            '<%= yeoman.dist %>/*',
+            '!<%= yeoman.dist %>/.git*'
           ]
         }]
       },
@@ -104,8 +135,8 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     bowerInstall: {
       target: {
-        src: ['<%%= yeoman.app %>/index.html'],
-        ignorePath: '<%%= yeoman.app %>/'
+        src: ['<%= yeoman.app %>/index.html'],
+        ignorePath: '<%= yeoman.app %>/'
       }
     },
 
@@ -116,8 +147,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: '<%%= yeoman.app %>',
-          dest: '<%%= yeoman.dist %>',
+          cwd: '<%= yeoman.app %>',
+          dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
@@ -131,13 +162,13 @@ module.exports = function (grunt) {
         }, {
           expand: true,
           cwd: '.tmp/images',
-          dest: '<%%= yeoman.dist %>/images',
+          dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
         }]
       },
       styles: {
         expand: true,
-        cwd: '<%%= yeoman.app %>/styles',
+        cwd: '<%= yeoman.app %>/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }
@@ -176,7 +207,8 @@ module.exports = function (grunt) {
       'concurrent:server',
 	  'run:mock',
       'autoprefixer',
-      'connect:livereload',
+      'configureProxies',
+	  'connect:livereload',
       'watch'
     ]);
   });
