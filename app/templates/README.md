@@ -25,15 +25,15 @@ Robotype speeds up your rapid prototyping by generating a quick-start project se
 
 ## Quick-Start
 
-1.	Create and / or go into your project directory and call the Yeoman Robotype generator:
+1.	Switch to your project directory and call the Yeoman Robotype generator:
 
 	```shell
 	yo robotype
 	```
 
-2.	Provide a project name when the robotype generator asks you for.
+2.	Enter a project name, when the robotype generator asks you for it.
 
-3.	Start the Server with grunt:
+3.	Start the server with grunt:
 
 	```shell
 	Grunt serve
@@ -74,9 +74,12 @@ robotype/
 ```
 
 ### API
-The RESTful API and data model is defined in separate JSON files in the /api directory. Each type is defined in an individual file (products.json, users.json).
+The APIs and data models are defined in separate JSON files located inside the /api directory. Each type has its own JSON file (products.json, users.json).
+On how to describe the APIs and the data models please consult the [Swagger RESTful API Documentation Specification](https://github.com/wordnik/swagger-spec/blob/master/versions/1.2.md)
 
-To extend or build your own API, you can define new types based on the examples given. To make them publicly available, you have to extend the mapping in the ApiService factory (/app/apiService.js):
+By specifing a "mockValue" in your models you can define what kind of mock data the mock server should return for each property in your model. For the functions available take a look at the functions.js of the vi mock server (/node_modules/vi-mock-server/functions.js).
+
+To extend or build your own API, you can define new types based on the examples given. To access them in you application, you have to extend the mapping in the ApiService factory (/app/apiService.js):
 ```js
 angular.module('app')
   .factory('ApiService', function () {
