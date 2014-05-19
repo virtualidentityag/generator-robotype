@@ -140,7 +140,7 @@ The UI of the showcase app is enhanced by Angular UI Bootstrap widgets. With UI 
 For usage of these widgets, please refer to [Angular UI Bootstrap](http://angular-ui.github.io/bootstrap/) or [Bootstrap](http://getbootstrap.com/)
 
 ## Creators
-[Marco Fenske](mailto:marco.fenske@virtual-identity.com), [Clemens Fiedler](mailto:clemens.fiedler@virtual-identity.com), [Jan Hadenfeld](mailto:jan.hadenfeld@virtual-identity.com), [Ralf Hafner](mailto:ralf.hafner@virtual-identity.com), [Marc Linden](mailto:marc.linden@virtual-identity.com), [Timo Mayer](mailto:timo.mayer@virtual-identity.com)
+[Marco Fenske](mailto:marco.fenske@virtual-identity.com), [Clemens Fiedler](mailto:clemens.fiedler@virtual-identity.com), [Jan Hadenfeldt](mailto:jan.hadenfeldt@virtual-identity.com), [Ralf Hafner](mailto:ralf.hafner@virtual-identity.com), [Marc Linden](mailto:marc.linden@virtual-identity.com), [Timo Mayer](mailto:timo.mayer@virtual-identity.com)
 
 
 ## Copyright and license
